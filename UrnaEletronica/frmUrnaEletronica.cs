@@ -1,9 +1,19 @@
+using System;
+using System.Drawing;
+
 namespace UrnaEletronica {
     public partial class frmUrnaEletronica : Form {
+
         public frmUrnaEletronica() {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
         }
+
+        Candidato ciro = new Candidato("12", "Ciro", "PDT");
+        Candidato lula = new Candidato("13", "Lula", "PT");
+        Candidato padre = new Candidato("14", "Padre Kelmon", "PTB");
+        Candidato bolsonaro = new Candidato("22", "Bolsonaro", "PL");
 
         private void frmUrnaEletronica_Load(object sender, EventArgs e) {
 
@@ -58,6 +68,8 @@ namespace UrnaEletronica {
             txtDigito1.Text = "";
             txtDigito2.Text = "";
             txtDigito1.Focus();
+            lbNome.Text = "Nome: ";
+            lbPartido.Text = "Partido: ";
         }
 
         private void btnConfirma_Click(object sender, EventArgs e) {
@@ -68,15 +80,7 @@ namespace UrnaEletronica {
 
         }
 
-        private void txtDigito1_TextChanged(object sender, EventArgs e) {
-
-        }
-
-        private void txtDigito2_TextChanged(object sender, EventArgs e) {
-
-        }
-         
-        private void RegistrarDigito (string digito){
+        private void RegistrarDigito(string digito) {
 
             if (string.IsNullOrEmpty(txtDigito1.Text)) {
                 txtDigito1.Text = digito;
