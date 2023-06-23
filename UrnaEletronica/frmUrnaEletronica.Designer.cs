@@ -38,17 +38,17 @@
             btnCorrige = new Button();
             btnConfirma = new Button();
             pnVoto = new Panel();
+            txtDigito2 = new TextBox();
+            txtDigito1 = new TextBox();
             lbCargo = new Label();
             lbConfirma = new Label();
             lbCorrige = new Label();
             lbNumero = new Label();
             lbPartido = new Label();
             lbNome = new Label();
-            pbPresidente = new PictureBox();
-            txtDigito2 = new TextBox();
-            txtDigito1 = new TextBox();
+            pbFoto = new PictureBox();
             pnVoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbPresidente).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // btn1
@@ -230,12 +230,38 @@
             pnVoto.Controls.Add(lbNumero);
             pnVoto.Controls.Add(lbPartido);
             pnVoto.Controls.Add(lbNome);
-            pnVoto.Controls.Add(pbPresidente);
+            pnVoto.Controls.Add(pbFoto);
             pnVoto.Location = new Point(27, 136);
             pnVoto.Name = "pnVoto";
             pnVoto.Size = new Size(353, 206);
             pnVoto.TabIndex = 13;
             pnVoto.Paint += pnVoto_Paint;
+            // 
+            // txtDigito2
+            // 
+            txtDigito2.Anchor = AnchorStyles.None;
+            txtDigito2.BorderStyle = BorderStyle.FixedSingle;
+            txtDigito2.Font = new Font("Microsoft JhengHei", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtDigito2.Location = new Point(118, 48);
+            txtDigito2.MaxLength = 1;
+            txtDigito2.Name = "txtDigito2";
+            txtDigito2.ReadOnly = true;
+            txtDigito2.Size = new Size(40, 43);
+            txtDigito2.TabIndex = 12;
+            txtDigito2.TextAlign = HorizontalAlignment.Center;
+            // 
+            // txtDigito1
+            // 
+            txtDigito1.Anchor = AnchorStyles.None;
+            txtDigito1.BorderStyle = BorderStyle.FixedSingle;
+            txtDigito1.Font = new Font("Microsoft JhengHei", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtDigito1.Location = new Point(75, 48);
+            txtDigito1.MaxLength = 1;
+            txtDigito1.Name = "txtDigito1";
+            txtDigito1.ReadOnly = true;
+            txtDigito1.Size = new Size(40, 43);
+            txtDigito1.TabIndex = 11;
+            txtDigito1.TextAlign = HorizontalAlignment.Center;
             // 
             // lbCargo
             // 
@@ -291,39 +317,13 @@
             lbNome.TabIndex = 4;
             lbNome.Text = "Nome: ";
             // 
-            // pbPresidente
+            // pbFoto
             // 
-            pbPresidente.Location = new Point(224, 3);
-            pbPresidente.Name = "pbPresidente";
-            pbPresidente.Size = new Size(126, 137);
-            pbPresidente.TabIndex = 0;
-            pbPresidente.TabStop = false;
-            // 
-            // txtDigito2
-            // 
-            txtDigito2.Anchor = AnchorStyles.None;
-            txtDigito2.BorderStyle = BorderStyle.FixedSingle;
-            txtDigito2.Font = new Font("Microsoft JhengHei", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            txtDigito2.Location = new Point(118, 48);
-            txtDigito2.MaxLength = 1;
-            txtDigito2.Name = "txtDigito2";
-            txtDigito2.ReadOnly = true;
-            txtDigito2.Size = new Size(40, 43);
-            txtDigito2.TabIndex = 12;
-            txtDigito2.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txtDigito1
-            // 
-            txtDigito1.Anchor = AnchorStyles.None;
-            txtDigito1.BorderStyle = BorderStyle.FixedSingle;
-            txtDigito1.Font = new Font("Microsoft JhengHei", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            txtDigito1.Location = new Point(75, 48);
-            txtDigito1.MaxLength = 1;
-            txtDigito1.Name = "txtDigito1";
-            txtDigito1.ReadOnly = true;
-            txtDigito1.Size = new Size(40, 43);
-            txtDigito1.TabIndex = 11;
-            txtDigito1.TextAlign = HorizontalAlignment.Center;
+            pbFoto.Location = new Point(224, 3);
+            pbFoto.Name = "pbFoto";
+            pbFoto.Size = new Size(126, 137);
+            pbFoto.TabIndex = 0;
+            pbFoto.TabStop = false;
             // 
             // frmUrnaEletronica
             // 
@@ -353,7 +353,7 @@
             Load += frmUrnaEletronica_Load;
             pnVoto.ResumeLayout(false);
             pnVoto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbPresidente).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }
 
@@ -373,7 +373,7 @@
         private Button btnCorrige;
         private Button btnConfirma;
         private Panel pnVoto;
-        private PictureBox pbPresidente;
+        private PictureBox pbFoto;
         private Label lbPartido;
         private Label lbNome;
         private Label lbNumero;

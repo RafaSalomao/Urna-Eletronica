@@ -4,16 +4,26 @@ using System.Drawing;
 namespace UrnaEletronica {
     public partial class frmUrnaEletronica : Form {
 
+        private Dictionary<string, Candidato> _dicCandidato;
+
         public frmUrnaEletronica() {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
 
-        }
+            Image imgCiro = Image.FromFile("D:\\Estudos\\Progamação\\C#\\Projeto Urna Eletronica\\UrnaEletronica\\UrnaEletronica\\img\\cadidatos\\ciro.jpg");
+            Image imgLula = Image.FromFile("D:\\Estudos\\Progamação\\C#\\Projeto Urna Eletronica\\UrnaEletronica\\UrnaEletronica\\img\\cadidatos\\lula.jpg");
+            Image imgPadre = Image.FromFile("D:\\Estudos\\Progamação\\C#\\Projeto Urna Eletronica\\UrnaEletronica\\UrnaEletronica\\img\\cadidatos\\padre.jpeg");
+            Image imgBolsonaro = Image.FromFile("D:\\Estudos\\Progamação\\C#\\Projeto Urna Eletronica\\UrnaEletronica\\UrnaEletronica\\img\\cadidatos\\bolsonaro.jpeg");
 
-        Candidato ciro = new Candidato("12", "Ciro", "PDT");
-        Candidato lula = new Candidato("13", "Lula", "PT");
-        Candidato padre = new Candidato("14", "Padre Kelmon", "PTB");
-        Candidato bolsonaro = new Candidato("22", "Bolsonaro", "PL");
+
+            //Adiciona os candidatos no dicionário "_dicCandidato"
+            _dicCandidato = new Dictionary<string, Candidato>();
+            _dicCandidato.Add("12", new Candidato() { Id = "12", Nome = "Ciro Gomes", Partido = "PDT", Foto = imgCiro });
+            _dicCandidato.Add("13", new Candidato() { Id = "13", Nome = "Lula", Partido = "PT", Foto = imgLula });
+            _dicCandidato.Add("14", new Candidato() { Id = "14", Nome = "Padre Kelmon", Partido = "PTB", Foto = imgPadre });
+            _dicCandidato.Add("22", new Candidato() { Id = "22", Nome = "Jair Bolsonaro", Partido = "PL", Foto = imgBolsonaro });
+
+        }
 
         private void frmUrnaEletronica_Load(object sender, EventArgs e) {
 
@@ -65,11 +75,7 @@ namespace UrnaEletronica {
         }
 
         private void btnCorrige_Click(object sender, EventArgs e) {
-            txtDigito1.Text = "";
-            txtDigito2.Text = "";
-            txtDigito1.Focus();
-            lbNome.Text = "Nome: ";
-            lbPartido.Text = "Partido: ";
+            Limpar();
         }
 
         private void btnConfirma_Click(object sender, EventArgs e) {
@@ -80,6 +86,7 @@ namespace UrnaEletronica {
 
         }
 
+        //
         private void RegistrarDigito(string digito) {
 
             if (string.IsNullOrEmpty(txtDigito1.Text)) {
@@ -87,8 +94,36 @@ namespace UrnaEletronica {
             }
             else {
                 txtDigito2.Text = digito;
+                PreencherCandidato(txtDigito1.Text, txtDigito2.Text);
             }
 
         }
+
+        private void PreencherCandidato(string digito1, string digito2) {
+
+            if (_dicCandidato.ContainsKey(digito1 + digito2)) {
+
+                lbNome.Text = ($"Nome: {_dicCandidato[digito1 + digito2].Nome}");
+                lbPartido.Text = ($"Partido: {_dicCandidato[digito1 + digito2].Partido}");
+                pbFoto.Image = _dicCandidato[digito1 + digito2].Foto;
+                pbFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else {
+                MessageBox.Show("Candidato não encontrado");
+                Limpar();
+            }
+
+        }
+
+        private void Limpar() {
+            txtDigito1.Text = "";
+            txtDigito2.Text = "";
+            txtDigito1.Focus();
+            lbNome.Text = "Nome: ";
+            lbPartido.Text = "Partido: ";
+            pbFoto.Image = null;
+        }
+
+
     }
 }
